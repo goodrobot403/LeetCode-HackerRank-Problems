@@ -1,6 +1,7 @@
 package hackerrank;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -20,8 +21,24 @@ class BreakingTheRecordsResult {
      */
 
     public static List<Integer> breakingRecords(List<Integer> scores) {
-        // Write your code here
-        return null;
+        int minScore = 0, maxScore = 0, minCount = 0, maxCount = 0;
+        for (int i = 0; i < scores.size(); i++) {
+            if (i == 0) {
+                minScore = scores.get(0);
+                maxScore = scores.get(0);
+                continue;
+            }
+            Integer score = scores.get(i);
+            if (score < minScore) {
+                minScore = score;
+                minCount++;
+            }
+            if (score > maxScore) {
+                maxScore = score;
+                maxCount++;
+            }
+        }
+        return Arrays.asList(maxCount, minCount);
     }
 
 }
